@@ -29,7 +29,7 @@ class ListContacts extends Component {
     const { query } = this.state
     
     //destructure this.props.contacts
-    const { contacts, onDeleteContact } = this.props
+    const { contacts, onDeleteContact, onNavigate } = this.props
 
     //now we want to filter our contact to whatever we put in the input field.
     // showingContacts is what we'll show now, not 'contacts' formerly mapped over 
@@ -49,9 +49,13 @@ class ListContacts extends Component {
                  placeholder="Search Contacts"
                  //set it to the same as the query state
                  value={query}
-                 onChange={(event) => this.updateQuery(event.target.value)}
-                 
+                 onChange={(event) => this.updateQuery(event.target.value)}    
           />
+          <a href="#create" 
+             onClick={onNavigate} 
+             className="add-contact"
+          >Add Contact
+          </a>
         </div>
         {/* GUARD UP OPERATOR */}
         {showingContacts.length !== contacts.length && (
