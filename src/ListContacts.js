@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 
 class ListContacts extends Component {
@@ -29,7 +30,7 @@ class ListContacts extends Component {
     const { query } = this.state
     
     //destructure this.props.contacts
-    const { contacts, onDeleteContact, onNavigate } = this.props
+    const { contacts, onDeleteContact } = this.props
 
     //now we want to filter our contact to whatever we put in the input field.
     // showingContacts is what we'll show now, not 'contacts' formerly mapped over 
@@ -51,11 +52,11 @@ class ListContacts extends Component {
                  value={query}
                  onChange={(event) => this.updateQuery(event.target.value)}    
           />
-          <a href="#create" 
-             onClick={onNavigate} 
+          <Link 
+             to='/create'
              className="add-contact"
           >Add Contact
-          </a>
+          </Link>
         </div>
         {/* GUARD UP OPERATOR */}
         {showingContacts.length !== contacts.length && (
